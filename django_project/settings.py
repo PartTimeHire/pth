@@ -21,7 +21,7 @@ SECRET_KEY = 'django-insecure-x9vf4aeprso6u6rt@sk_fos#-=ygj@^b--&!84-vqm0u6#7uq2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'https://parttimehire.github.io/pth/']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'parttimehire.github.io/pth/']
 
 
 # Application definition
