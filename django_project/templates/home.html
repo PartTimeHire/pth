@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="features">
+    <div class="feature">
+        <h2>Job Requests</h2>
+        <p>Create a Job Request</p>
+        <a href="{% url 'create_job_request' %}">Get Started</a>
+    </div>
+    <div class="feature">
+        <h2>Job Search</h2>
+        <p>Find Available Jobs</p>
+        <a href="{% url 'job_search' %}">Search Now</a>
+    </div>
+    <div class="feature">
+        <h2>Profile Customisation</h2>
+        <p>Customize Your Profile</p>
+        <a href="{% url 'edit_profile' %}">Edit Profile</a>
+    </div>
+</div>
+{% endblock %}

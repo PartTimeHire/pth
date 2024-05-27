@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+            font-size: 2em;
+        }
+
+        .filters {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .filter-input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 150px;
+        }
+
+        .search-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background-color: #00aaff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background-color: #008ecc;
+        }
+
+        .job-listing {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .job-listing:hover {
+            transform: translateY(-5px);
+            background-color: #f0f0f0;
+        }
+
+        .job-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .job-description {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .job-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #00aaff;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Search</h1>
+        <!-- Form with CSRF token -->
+        <form action="{% url 'job_search' %}?next={{ request.path }}" method="GET" class="filters">
+            {% csrf_token %}
+            <div>
+                <label for="price-range" class="filter-label">Price Range:</label><br>
+                <input type="text" id="price-range" name="price-range" class="filter-input" placeholder="Min - Max (£)">
+            </div>
+            <div>
+                <label for="distance" class="filter-label">Distance:</label><br>
+                <input type="text" id="distance" name="distance" class="filter-input" placeholder="Max Distance (km)">
+            </div>
+            <button type="submit" class="search-btn">Search</button>
+        </form>
+
+        <!-- Job listing box -->
+        {% for job_request in job_requests %}
+        <div class="job-listing">
+            <div class="job-title">{{ job_request.title }}</div>
+            <div class="job-description">{{ job_request.description }}</div>
+            <div class="job-price">{{ job_request.price }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Property of James Khalil.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Authenticated</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 3em;
+            letter-spacing: 2px;
+            color: #333;
+        }
+
+        p {
+            margin-top: 20px;
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .button-container {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            background-color: #00aaff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 10px;
+            text-decoration: none;
+            font-size: 1.2em;
+            text-transform: uppercase;
+        }
+
+        .button:hover {
+            background-color: #008ecc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ user.username }}!</h1>
+        <p>You are now logged in.</p>
+        <div class="button-container">
+            <a href="{% url 'edit_profile' %}" class="button">Edit Profile</a>
+            <a href="{% url 'create_job_request' %}" class="button">Create Job Request</a>
+            <a href="{% url 'job_search' %}" class="button">Job Search</a>
+            <a href="{% url 'logout' %}" class="button">Logout</a>
+        </div>
+    </div>
+</body>
+</html>
